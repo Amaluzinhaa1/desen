@@ -1,0 +1,20 @@
+CREATE PROCEDURE sp_LevantamentoDiario
+AS
+BEGIN
+    SELECT
+        DataCompra,
+        SUM(Quantidade) AS TotalCompras
+    FROM Produtos
+    GROUP BY DataCompra;
+END;
+
+DELIMITER //
+CREATE PROCEDURE sp_LevantamentoDiario()
+BEGIN
+    SELECT
+        DataCompra,
+        SUM(Quantidade) AS TotalCompras
+    FROM Produtos
+    GROUP BY DataCompra;
+END //
+DELIMITER ;
